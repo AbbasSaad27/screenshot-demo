@@ -343,6 +343,7 @@
                     const captureContext = captureCanvas.getContext("2d")
                     img.onload = () =>  {
                         console.log(x,y,width,height)
+                        document.documentElement.appendChild(img);
                         captureContext.drawImage(img, x, y, width, height, 0, 0, width, height);
                         const imgUrl = captureCanvas.toDataURL();
                         this.editInitiate(imgUrl)
