@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Home</title>
+    <style>
+        .icon {
+            width: 4rem;
+            height: 4rem;
+            background-color: unset;
+            position: fixed;
+            top: 0;
+            z-index: 99999;
+        }
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999999;
+            background-color: #0000007a;
+            backdrop-filter: blur(5px);
+            display: none;
+        }
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            width: 90%;
+            border-radius: 5px;
+        }
+        .ss-container {
+            position: relative;
+            margin: 0 auto;
+            width: 80%;
+            height: 700px;
+        }
+        .ss-container canvas {
+            /* width: 80%; */
+            max-width: 100%;
+            /* height: 640px; */
+            max-height: 100%;
+            display: block;
+            /* object-fit: contain; */
+        }
+        .ss-container div {
+            position: absolute !important;
+            background-color: transparent !important;
+        }
+        .btn-save, .btn-delete, .btn-annotate, .btn-del-annotation {
+            background-color: unset;
+            padding: 1rem;
+            width: 4rem;
+            height: 4rem;
+            border: 2px solid black;
+            margin: 1rem 1rem 0;
+            cursor: pointer;
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .overlay-canvas {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            z-index: 2 !important;
+        }
+
+        .wrapdivs {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .annotations-container {
+            color: black;
+            font-family: inherit;
+            padding: 0 15px;
+            max-height: 100%;
+            overflow: auto;
+        }
+
+        .annotation-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .btn-del-annotation {
+            margin: 0 0 0 8px;
+
+        }
+
+        button > * {
+            pointer-events: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="popup">
+            <div class="buttons-container">
+                <button class="btn btn-save">
+                    <img src="imgs/save.svg" alt="" srcset="">
+                </button>
+                <button class="btn btn-delete">
+                    <img src="imgs/delete.svg" alt="" srcset="">
+                </button>
+                <button class="btn btn-annotate">
+                    <img src="imgs/annotate.svg" alt="" srcset="">
+                </button>
+            </div>
+            <div class="wrapdivs">
+                <div class="ss-container">
+                </div>
+                <div class="annotations-container">
+                    <!-- <div class="annotation-block">
+                        <p class="title">Annotation No. 1</p>
+                        <button class="btn-del-annotation">
+                            <img src="imgs/delete.svg" alt="" srcset="">
+                        </button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <button class="icon" id="camera-icon"><img src="imgs/camera-solid.svg" alt=""></button>
+        <section id="hero" class="sec">
+            <header>
+                <nav>
+                    <h3 class="header-branding" >Pizzaria</h3>
+                    <a href="./menu.html">Menu</a>
+                </nav>
+            </header>
+            
+            <div class="heading-container">
+                <h1 class="page-heading">
+                    mouth-watering <br>
+                    artisanal <br>
+                    pizzas
+                </h1>
+                <img class="pizza-vect" src="imgs/pizza-vect.svg" alt="">
+            </div>
+
+        </section>
+
+        <section class="sec menu-sec">
+            <div class="menu-items-container">
+                <div class="menu-item">
+                    <div class="img-container">
+                        <img class="pizza-pic" src="imgs/pizza-1.jpg" alt="">
+                    </div>
+                    <div class="pizza-details">
+                        <h4 class="pizza-name">Bacon Blast</h4>
+                        <p class="price-text">￡13.99</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="img-container">
+                        <img class="pizza-pic" src="imgs/cheese-pizza.jpg" alt="">
+                    </div>
+                    <div class="pizza-details">
+                        <h4 class="pizza-name">Cheese Bomb</h4>
+                        <p class="price-text">￡9.99</p>
+                    </div>
+                </div>
+            </div>
+            <a href="./menu.html" class="btn-view">View more &rarr;</a>
+        </section>
+
+        <section class="sec why-us-sec">
+            <h2 class="section-title">Why Us?</h2>
+
+            <div class="flex-wrapper">
+                <div class="wrapper">
+                    <div class="about-block">
+                        <h3 class="about-title">Fresh and high-quality ingredients</h3>
+                        <p class="about-text">From farm to table, we use only the freshest and highest quality ingredients to create our mouth-watering pizzas. Taste the difference with every bite!</p>
+                    </div>
+                    <div class="about-block">
+                        <h3 class="about-title">Fast and convenient delivery/pickup</h3>
+                        <p class="about-text">Enjoy our delicious pizzas without leaving your home! Our fast and convenient delivery and pickup options make it easy to enjoy your favorite pizzas anytime, anywhere.</p>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="about-block">
+                        <h3 class="about-title">Endless customization options</h3>
+                        <p class="about-text">Create your perfect pizza with our endless customization options. Choose from a wide range of toppings, sauces, and crusts to suit your taste and preferences!</p>
+                    </div>
+                    <div class="about-block">
+                        <h3 class="about-title">Sustainable and ethical practices</h3>
+                        <p class="about-text">We care about the planet and our community. That's why we use eco-friendly packaging and support local suppliers. Join us in creating a better world, one pizza at a time!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-sec sec">
+        <div class="footer-nav">
+            <h3 class="footer-title">Pizzaria</h3>
+
+            <p class="copyright">Copyright © 2023 Pizzaria. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/domToPic.js"></script>
+    <script src="js/html2canvas.js"></script>
+    <script src="js/screenshot.js"></script>
+    <script type="module">
+        var Screenshot = {
+            isSelecting: '',
+            selectionInitiated: false,
+            isAnnotating: false,
+            startX: 0,
+            startY: window.pageYOffset,
+            endX: document.documentElement.clientWidth,
+            endY: window.innerHeight,
+            annotateStartX: 0,
+            annotateStartY: 0,
+            annotateEndX: 0,
+            annotateEndY: 0,
+            initCanvas: "",
+            selectionBlock: "",
+            screenshotCanvas: "",
+            overScreenshotCanvas: "",
+            annotations: [],
+            clickSound: new Audio("./sound/click.mp3"),
+            cameraBtn: document.getElementById("camera-icon"),
+            overlay: document.getElementsByClassName("overlay")[0],
+            ssContainer: document.getElementsByClassName("ss-container")[0],
+            popupElement: document.getElementsByClassName("popup")[0],
+            ssImage: document.getElementsByClassName("ss-image")[0],
+            btnSave: document.getElementsByClassName("btn-save")[0],
+            btnDelete: document.getElementsByClassName("btn-delete")[0],
+            btnAnnotate: document.getElementsByClassName("btn-annotate")[0],
+            annotationsContainer: document.getElementsByClassName("annotations-container")[0],
+            
+            drawSelectionRectangle: function(element, onlySelect = false) {
+                if(!onlySelect) {
+                    this.initCanvas = document.createElement('canvas');
+                    this.initCanvas.id = 'selection-canvas';
+                    this.initCanvas.width = document.documentElement.clientWidth;
+                    this.initCanvas.height = window.innerHeight;
+                    this.initCanvas.style.position = 'fixed';
+                    this.initCanvas.style.top = '0';
+                    this.initCanvas.style.left = '0';
+                    this.initCanvas.style.zIndex = '9999';
+                    element.appendChild(this.initCanvas);
+                }
+
+                var ctx = this.initCanvas.getContext('2d');
+                ctx.lineWidth = 2;
+
+                this.selectionBlock = document.createElement('div');
+                this.selectionBlock.id = 'selection';
+                this.selectionBlock.style.position = 'fixed';
+                this.selectionBlock.style.border = '2px dashed red';
+                this.selectionBlock.style.backgroundColor = '#ffffff1f';
+                this.selectionBlock.style.top = 0;
+                this.selectionBlock.style.left = 0;
+                this.selectionBlock.style.width = "100%";
+                this.selectionBlock.style.height = "100%";
+                element.appendChild(this.selectionBlock);
+            },
+
+            updateSelection: function() {
+                var width = this.endX - this.startX;
+                var height = this.endY - this.startY;
+                var top = this.startY;
+                var left = this.startX;
+                if (width < 0) {
+                    left = this.endX;
+                    width = Math.abs(width);
+                }
+                if (height < 0) {
+                    top = this.endY;
+                    height = Math.abs(height);
+                }
+                this.selectionBlock.style.width = width + 'px';
+                this.selectionBlock.style.height = height + 'px';
+                this.selectionBlock.style.top = top + 'px';
+                this.selectionBlock.style.left = left + 'px';
+            },
+
+            canvaMouseDownFunc: function(event) {
+                this.isSelecting = true;
+                const rect = this.initCanvas.getBoundingClientRect();
+                this.startX = event.clientX - rect.left;
+                this.startY = event.clientY - rect.top;
+            },
+
+            canvaMouseMoveFunc: function(event) {
+                if (this.isSelecting) {
+                    const rect = this.initCanvas.getBoundingClientRect();
+                    this.endX = event.clientX - rect.left;
+                    this.endY = event.clientY - rect.top;
+                    this.updateSelection();
+                }
+            },
+
+            screenshotMakingFunc: async function(event) {
+                this.selectionBlock.style.border = '';
+                this.selectionBlock.style.backgroundColor = '';                
+
+
+                let x = this.startX;
+                let y = this.startY;
+
+                if(this.startY > this.endY && typeof this.isSelecting == "boolean" ) {
+                    var prevend = this.endY;
+                    this.endY = this.startY;
+                    this.startY = prevend;
+                    this.isSelecting = "";
+                    x = this.startX;
+                    y = this.startY;
+                }
+
+                if(y < window.pageYOffset) {
+                    y += window.pageYOffset
+                }
+                const width = this.selectionBlock.offsetWidth;
+                const height = this.selectionBlock.offsetHeight;
+                console.log(width, height)
+                domtoimage.toSvg(document.documentElement).then((dataUrl) => {
+                    var img = new Image();
+                    img.src = dataUrl;
+                    img.style.width = document.documentElement.clientWidth;
+                    img.style.height = document.documentElement.scroll
+                    const captureCanvas = document.createElement("canvas");
+                    captureCanvas.width = width;
+                    captureCanvas.height = height;
+                    const captureContext = captureCanvas.getContext("2d")
+                    img.onload = () =>  {
+                        console.log(x,y,width,height)
+                        captureContext.drawImage(img, x, y, width, height, 0, 0, width, height);
+                        const imgUrl = captureCanvas.toDataURL();
+                        this.editInitiate(imgUrl)
+                    }
+                }).catch(function (error) {
+                    alert('oops, something went wrong!', error);
+                });
+                
+                this.clickSound.play();
+                this.initCanvas.remove();
+                this.selectionBlock.remove();
+                this.initCanvas = "";
+            },
+
+            canvasMouseUpFunc: function() {
+                this.isSelecting = false;
+                if(this.selectionInitiated) {
+                    this.screenshotMakingFunc();
+                    this.selectionInitiated = false;
+                    return;
+                }
+                if(this.isAnnotating) {
+                    const ctx = this.initCanvas.getContext("2d");
+                    const rect = this.initCanvas.getBoundingClientRect();
+                    var scaleX = this.initCanvas.width / rect.width;
+                    var scaleY = this.initCanvas.height / rect.height;
+                    const x = this.startX * scaleX;
+                    const y = this.startY * scaleY;
+
+                    const width = (this.endX * scaleX) - x;
+                    const height = (this.endY * scaleY) - y;
+                    ctx.strokeStyle = 'red';
+                    ctx.strokeRect(x, y, width, height)
+                    ctx.font = '20px Arial';
+                    ctx.fillStyle = 'red';
+                    ctx.fillText(this.annotations.length + 1, x, y - 5);
+                    this.annotations.push({x, y, width, height});
+                    this.isAnnotating = false;
+                    // this.selectionBlock.remove();
+                    this.selectionBlock.style.border = "";
+                    // this.selectionBlock.style.zIndex = 5
+                    const id = this.annotations.length - 1;
+                    const annotationHtml = `<div class="annotation-block" data-id='${id}'>
+                                                <p class="title">Annotation No. ${this.annotations.length}</p>
+                                                <button class="btn-del-annotation">
+                                                    <img src="imgs/delete.svg" alt="" srcset="">
+                                                </button>
+                                            </div>`
+                    // const annotationHtml = `<div>Annotation No. ${this.annotations.length}</div>`
+                    // this.annotationsContainer.innerHTML += annotationHtml
+                    this.annotationsContainer.insertAdjacentHTML("beforeend", annotationHtml)
+                }
+            },
+
+            screenshotFunc: function() {
+                this.initCanvas.addEventListener("mousedown", this.canvaMouseDownFunc.bind(this));
+                this.initCanvas.addEventListener("mousemove", this.canvaMouseMoveFunc.bind(this));
+                this.initCanvas.addEventListener("mouseup", this.canvasMouseUpFunc.bind(this));
+            },
+
+            cameraBtnClickFunc: function() {
+                if(this.selectionInitiated) {
+                    this.screenshotMakingFunc();
+                    this.selectionInitiated = false;
+                    return;
+                }
+                this.drawSelectionRectangle(document.body);
+                this.screenshotFunc.bind(this)();
+                this.selectionInitiated = !this.selectionInitiated;
+            },
+
+            editInitiate: function(screenshot) {
+                // create a canvas element
+                this.screenshotCanvas = document.createElement('canvas');
+                this.overScreenshotCanvas = document.createElement("canvas");
+                this.overScreenshotCanvas.classList.add("overlay-canvas");
+                this.overlay.style.display = "block"
+                this.ssContainer.appendChild(this.screenshotCanvas)
+                // this.ssContainer.appendChild(this.overScreenshotCanvas)
+
+
+                // load the image onto the canvas
+                var ctx = this.screenshotCanvas.getContext('2d');
+                var img = new Image();
+                img.src = screenshot;
+                img.onload = () => {
+                    this.screenshotCanvas.width = this.overScreenshotCanvas.width = img.width;
+                    this.screenshotCanvas.height = this.overScreenshotCanvas.height = img.height + 40;
+                    ctx.drawImage(img, 0, 40);
+                    
+                    // draw a dark gray rectangle over the image
+                    ctx.fillStyle = '#1d1c1c';
+                    ctx.fillRect(0, 0, this.screenshotCanvas.width, 40); // adjust the height of the rectangle as per your requirement
+                    
+                    // draw the current page URL over the dark gray rectangle
+                    ctx.fillStyle = '#fff';
+                    ctx.font = '16px Arial'; // adjust the font size and family as per your requirement
+                    var currentPageUrl = window.location.href;
+                    var maxWidth = this.screenshotCanvas.width - 20; // adjust the padding as per your requirement
+                    var currentPageUrlWidth = ctx.measureText(currentPageUrl).width;
+                    if (currentPageUrlWidth > maxWidth) {
+                        currentPageUrl = currentPageUrl.substring(0, Math.floor(maxWidth/ctx.measureText(currentPageUrl.substring(0, currentPageUrl.length/2)).width)) + '...';
+                    }
+                    ctx.fillText(currentPageUrl, 10, 25); // adjust the position of the text as per your requirement
+                };
+            },
+
+            initiatAnnotation: function() {
+                if(this.isAnnotating) return;
+                if(this.initCanvas) {
+                    this.drawSelectionRectangle(this.ssContainer, true);
+                    this.isAnnotating = true;
+                    return;
+                }
+                this.drawSelectionRectangle(this.ssContainer);
+                this.initCanvas.width = this.screenshotCanvas.width;
+                this.initCanvas.height = this.screenshotCanvas.height;
+                this.initCanvas.classList.add("overlay-canvas");
+                this.isAnnotating = true;
+                this.screenshotFunc();
+            },
+
+            redrawAnnotation: function(deletedAnnotation) {
+                const ctx = this.initCanvas.getContext("2d");
+                ctx.clearRect(0, 0, this.initCanvas.width, this.initCanvas.height);
+                this.annotations.splice(+deletedAnnotation, 1);
+                this.annotationsContainer.innerHTML = "";
+                this.annotations.forEach((ann, i) => {
+                    ctx.strokeRect(ann.x, ann.y, ann.width, ann.height);
+                    ctx.fillText(i + 1, ann.x, ann.y - 5);
+                    const html = `<div class="annotation-block" data-id='${i}'>
+                                                <p class="title">Annotation No. ${i+1}</p>
+                                                <button class="btn-del-annotation">
+                                                    <img src="imgs/delete.svg" alt="" srcset="">
+                                                </button>
+                                            </div>`
+
+                    this.annotationsContainer.insertAdjacentHTML("beforeend", html)
+                });
+            },
+            
+            discardScreenshotFunc: function() {
+                this.ssContainer.innerHTML = "";
+
+                this.overlay.style.display = "";
+                this.startX = 0;
+                this.startY = window.pageYOffset;
+                this.endX = document.documentElement.clientWidth;
+                this.endY = window.innerHeight;
+
+                this.annotations = [];
+            },
+            savePhotoFunc: function() {
+                const ssCanvasCtx = this.screenshotCanvas.getContext("2d");
+                if(this.initCanvas) ssCanvasCtx.drawImage(this.initCanvas, 0, 0);
+                const dataURL = this.screenshotCanvas.toDataURL();
+                const data = atob(dataURL.substring('data:image/'.length).split(',')[1]);
+
+                //Decode base64 data
+                const uint8Array = new Uint8Array(data.length);
+                for (let i = 0; i < data.length; i++) {
+                    uint8Array[i] = data.charCodeAt(i);
+                }
+
+                //Create Blob object
+                const blob = new Blob([uint8Array], {type: `image/png`});
+
+                //Create URL object
+                const imageUrl = URL.createObjectURL(blob);
+
+                //Create Image object
+                const img = new Image();
+                img.src = imageUrl;
+
+                document.body.appendChild(img);
+
+                const a = document.createElement('a');
+                a.download = 'myImage.' + "png";
+                a.href = imageUrl;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                this.discardScreenshotFunc();
+            },
+
+            uploadScreenshot: function() {},
+
+            updateCoords: function() {
+                // if(!this.selectionBlock) return;
+                this.startY = window.scrollY;
+            },
+
+            delAnnotates: function(e) {
+                if(e.target.classList.contains("btn-del-annotation")) {
+                    const id = e.target.parentElement.dataset.id;
+                    this.redrawAnnotation(id);
+                }
+            },
+
+            assignEvents: function() {
+                this.cameraBtn.addEventListener("click", this.cameraBtnClickFunc.bind(this));
+                this.btnDelete.addEventListener("click", this.discardScreenshotFunc.bind(this));
+                this.btnAnnotate.addEventListener("click", this.initiatAnnotation.bind(this));
+                this.btnSave.addEventListener("click", this.savePhotoFunc.bind(this));
+                this.annotationsContainer.addEventListener("click", this.delAnnotates.bind(this));
+                window.addEventListener("scroll", this.updateCoords.bind(this));
+                window.addEventListener("load", function() {
+                    this.startY = window.pageYOffset
+                }.bind(this))
+            }
+        }
+
+        Screenshot.assignEvents();
+    </script>
+</body>
+</html>
