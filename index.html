@@ -216,17 +216,16 @@
         </div>
     </footer>
     <script src="js/domToPic.js"></script>
-    <script src="js/html2canvas.js"></script>
-    <script src="js/screenshot.js"></script>
-    <script type="module">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script>
         var Screenshot = {
             isSelecting: '',
             selectionInitiated: false,
             isAnnotating: false,
             startX: 0,
             startY: window.pageYOffset,
-            endX: document.documentElement.clientWidth,
-            endY: window.innerHeight,
+            endX: $(window).width(),
+            endY: $(window).height(),
             annotateStartX: 0,
             annotateStartY: 0,
             annotateEndX: 0,
@@ -337,7 +336,7 @@
                     var img = new Image();
                     img.src = dataUrl;
                     img.style.width = document.documentElement.clientWidth;
-                    img.style.height = document.documentElement.scroll
+                    img.style.height = document.documentElement.scrollHeight
                     const captureCanvas = document.createElement("canvas");
                     captureCanvas.width = width;
                     captureCanvas.height = height;
